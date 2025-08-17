@@ -3,7 +3,7 @@
 # int
 print(11)
 print(-11)
-print (0)
+print(0)
 
 # float
 print(1.1, 10.11)
