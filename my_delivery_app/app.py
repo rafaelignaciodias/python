@@ -1,3 +1,5 @@
+import os
+
 print("""
 ███╗░░░███╗██╗░░░██╗██████╗░███████╗██╗░░░░░██╗██╗░░░██╗███████╗██████╗░██╗░░░██╗░█████╗░██████╗░██████╗░
 ████╗░████║╚██╗░██╔╝██╔══██╗██╔════╝██║░░░░░██║██║░░░██║██╔════╝██╔══██╗╚██╗░██╔╝██╔══██╗██╔══██╗██╔══██╗
@@ -13,7 +15,21 @@ print("3. enable place")
 print("4. exit\n")
 
 try:
-    option = int(input("insert an option: "))
-    print(f"you choose the option {option}")
+    option = int(input("chose an option: "))
 except ValueError as e:
     print("you choose an invalid option")
+
+
+def finish_app():
+    os.system("clear")
+    print("finishing my delivery app")
+
+
+if option == 1:
+    print("register place option")
+elif option == 2:
+    print("list place")
+elif option == 2:
+    print("enable place")
+else:
+    finish_app()
