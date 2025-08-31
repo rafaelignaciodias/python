@@ -3,9 +3,13 @@ import os
 # places = []
 places = [
     {"name": "name 1", "category": "category 1", "active": False},
-    {"name": "name 3", "category": "category 2", "active": False},
+    {"name": "name 2", "category": "category 2", "active": False},
     {"name": "name 3", "category": "category 3", "active": True},
 ]
+
+
+def clear_screen():
+    os.system("cls" if os.name == "nt" else "clear")
 
 
 def show_header():
@@ -22,7 +26,7 @@ def show_header():
 def show_menu():
     print("1. register place")
     print("2. list place")
-    print("3. enable place")
+    print("3. change place status")
     print("4. exit\n")
 
 
@@ -35,9 +39,10 @@ def choose_menu_option():
             list_place()
         elif option == 3:
             change_place_status()
-        else:
+        elif option == 4:
             finish_app()
-
+        else:
+            invalid_option()
     except ValueError as e:
         invalid_option()
         return
@@ -62,13 +67,13 @@ def list_place():
     show_subtitles("list place")
     print()
 
+    print(f"{'name'.ljust(20)} | {'category'.ljust(20)} | {'status'.ljust(20)}")
+
     for place in places:
         place_name = place["name"]
         place_category = place["category"]
-        place_active = place["active"]
-        print(
-            f"name: {place_name} - category: {place_category} - active: {place_active}"
-        )
+        place_active = "active" if place["active"] else "inactive"
+        print(f"{place_name.ljust(20)} | {place_category.ljust(20)} | {place_active}")
 
     return_menu()
 
@@ -103,7 +108,7 @@ def finish_app():
 
 
 def show_subtitles(title):
-    os.system("clear")
+    clear_screen()
     print(title)
 
 
@@ -113,7 +118,7 @@ def return_menu():
 
 
 def main():
-    os.system("clear")
+    clear_screen()
     show_header()
     show_menu()
     choose_menu_option()
