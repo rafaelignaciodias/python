@@ -4,7 +4,7 @@ class Place:
     def __init__(self, name, category):
         self.name = name
         self.category = category
-        self.status = False
+        self._status = False
 
         Place.place_list.append(self)
 
@@ -14,6 +14,10 @@ class Place:
     def list_places():
         for place in Place.place_list:
             print(place)
+
+    @property
+    def status(self):
+        return "Active" if self._status else "Inactive"
 
 
 new_place = Place("new place", "super category")
